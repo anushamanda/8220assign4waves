@@ -2,12 +2,14 @@ from django.db import models
 from django.utils import timezone
 from datetime import datetime
 
+
+
 class Forms(models.Model):
     form_title = models.CharField(max_length=200)
-    form_1 = models.ImageField(upload_to='files/%Y/%m/%d/', blank=True)
-    form_2 = models.ImageField(upload_to='files/%Y/%m/%d/', blank=True)
-    form_3 = models.ImageField(upload_to='files/%Y/%m/%d/', blank=True)
-    form_4 = models.ImageField(upload_to='files/%Y/%m/%d/', blank=True)
+    form_1 = models.FileField(upload_to='files/%Y/%m/%d/', blank=True)
+    form_2 = models.FileField(upload_to='files/%Y/%m/%d/', blank=True)
+    form_3 = models.FileField(upload_to='files/%Y/%m/%d/', blank=True)
+    form_4 = models.FileField(upload_to='files/%Y/%m/%d/', blank=True)
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
     is_published=models.BooleanField(default=True)
@@ -26,7 +28,7 @@ class Record_log(models.Model):
     email=models.CharField(max_length=100)
     employee_id=models.CharField(max_length=50)
     phone=models.CharField(max_length=50)
-    upload_form=models.ImageField(upload_to='uploadedfiles/%Y/%m/%d/', blank=True)
+    upload_form=models.FileField(upload_to='uploadedfiles/%Y/%m/%d/', blank=True)
     comments=models.TextField()
     uploaded_date=models.DateTimeField(default=datetime.now, blank=True)
     #user_id=models.IntegerField()
@@ -45,7 +47,7 @@ class Station(models.Model):
 
 
 class Record(models.Model):
-    #supervisor_id=user_id=models.IntegerField(blank=True)
+    #supervisor=models.ForeignKey(Supervisor, on_delete=models.DO_NOTHING())
     name=models.CharField(max_length=50)
     #employee_id = models.CharField(max_length=50)
     email = models.CharField(max_length=100)
