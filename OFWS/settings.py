@@ -79,10 +79,14 @@ WSGI_APPLICATION = 'OFWS.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': 'd2u4u7kmjus8sk',
+        'USER': 'yoieffyidzettq',
+        'PASSWORD': 'fc4d70f6e47a6983d752552c5a69520e31b3d732a40f62f056ace19c925cce4b',
+        'HOST': 'ec2-3-91-112-166.compute-1.amazonaws.com',
+        'PORT': '5432',
+
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
