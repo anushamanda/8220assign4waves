@@ -79,10 +79,13 @@ WSGI_APPLICATION = 'OFWS.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'dofhmp',
-        'USER': 'postgres',
-        'PASSWORD': '123456789'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'd2u4u7kmjus8sk',
+        'USER': 'yoieffyidzettq',
+        'PASSWORD': 'fc4d70f6e47a6983d752552c5a69520e31b3d732a40f62f056ace19c925cce4b',
+        'HOST': 'ec2-3-91-112-166.compute-1.amazonaws.com',
+        'PORT': '5432',
+
     }
 }
 
