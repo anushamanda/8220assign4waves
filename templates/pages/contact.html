@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+   <body>
+        <div class="content container">
+           <div class="row">
+               <div class="col-md-12">
+                   <div class="links">
+                       <div class="row">
+                           <div class="col-md-5">
+                               <div class="thumbnail">
+                                   <img class="home_image" src="{% static 'img/contact-us.png' %}" alt="contact_us"/>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+       <div class="page-container">
+
+           <h2 class="top-menu">Contact Us</h2>
+           <p>To make an appointment for any doubts or questions, please use the
+               contact information below.</p>
+           <h3 class="top-menu">Phone and Email</h3>
+           <p>319-331-4666 <br>ofws@gmail.com</p>
+       </div>
+
+   </body>
+{% endblock %}
+</html>

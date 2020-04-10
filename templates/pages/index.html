@@ -1,7 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
 {% extends 'base.html' %}
-
+{% load staticfiles %}
 {% block content %}
-<h1>OMAHA FIREFIGHTER WELLNESS SYSTEM</h1>
+<body>
+    <div class="page-container">
+
+           <h2 class="top-menu">Omaha FireFighters Wellness System</h2>
+    </div>
+        <div class="content container">
+           <div class="row">
+               <div class="col-md-20">
+                   <div class="links">
+                       <!-- Example row of columns -->
+                       <div class="row">
+                           <div class="col-md-7">
+                               <br>
+                               <p>The Omaha FireFighters Wellness System is the website created with
+                                   <br>the purpose to make the lives of our hero easy.
+                                   <br>We all know that with the help of technology, our routine can be
+                                   <br>improved, so this system will help the Omaha Firefighters to download and
+                                   <br>upload their forms regarding their injuries, and will communicate with their
+                                   <br>supervisors. </p>
+                               <br>
+                               <p>In Omaha, there are in total of 650 firefighter who face many hazardous and
+                                   <br>dangerous situations in order to save people. It is very important to
+                                   <br>maintain their health records. Omaha Fire department wellness system will
+                                   <br>help to maintain and retrieve these health records in a simple way. 
+                                   <br>Firefighter can login to the website and download PDF forms as per the
+                                   <br>injury occurred. They can manually fill the record and upload it to the
+                                   <br>website in the form of PDF, TIFF or JPG. Superior/admin will login and
+                                   <br>check for the uploaded files and will approve or disapprove. When he
+                                   <br>disapproves, he will comment the reason for the disapproval and will send
+                                   <br>the comment to the firefighter to rectify. Upon approval, the file will
+                                   <br>be stores in the system and will allow supervisor to decide the condition
+                                   <br>of the firefighter.
+</p>
+                           </div>
+                           <div class="col-md-4">
+                               <div class="thumbnail">
+                                   <img class="home_image" src="{% static 'img/logoo.png' %}" alt="logo"/>
+                                   <div class="caption" style="text-align:center">
+                                       <h3>Helping our Hero!</h3>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+</body>
 {% endblock %}
-
-
+</html>

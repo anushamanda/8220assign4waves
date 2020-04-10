@@ -1,1 +1,93 @@
-<h1>forms</h1>
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+   <body>
+    <html>
+            {% if user.is_authenticated %}
+                <div class="page-container">
+
+                    <h2 class="top-menu">Hello {{ user.username }},</h2>
+                    <p>Please choose from below options.</p>
+
+                </div>
+            {% endif %}
+            <div class="content container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="links">
+                            <!-- Example row of columns -->
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="thumbnail">
+                                        <img src="{% static "img/form1.png" %}" alt="Injured On Duty"/>
+                                        <div class="caption">
+                                            <p>Click to Download the form Injured On Duty</p>
+                                            <p><a class="btn btn-primary" download="InjuredOnDutyForm.pdf" href="{% static "forms/injuredonduty.pdf" %}"
+                                                  role="button">Download &raquo;</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="thumbnail">
+                                        <img src="{% static "img/form2.png" %}" alt="Vehicle Accident"/>
+                                        <div class="caption">
+                                            <p>Click to Download the form Vehicle Accident</p>
+                                            <p><a class="btn btn-primary" download="VehicleAccidentForm.pdf" href="{% static "forms/vehicleaccident.pdf" %}"
+                                                  role="button">Download &raquo;</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="thumbnail">
+                                        <img src="{% static "img/form3.png" %}" alt="Biological Exposure"/>
+                                        <div class="caption">
+                                            <p>Click to Download the form Biological Exposure</p>
+                                            <p><a class="btn btn-primary" download="BiologicalExposureForm.pdf" href="{% static "forms/biologicalexposure.pdf" %}"
+                                                  role="button">Download &raquo;</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="thumbnail">
+                                        <img src="{% static "img/form4.png" %}" alt="Hazardous Material Exposure"/>
+                                        <div class="caption">
+                                            <p>Click to Download the form Hazardous Material Exposure</p>
+                                            <p><a class="btn btn-primary" download="HazardousMaterialExposureForm.pdf" href="{% static "forms/hazardousmaterialexposure.pdf" %}"
+                                                  role="button">Download &raquo;</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="thumbnail">
+                                        <img src="{% static "img/form.png" %}" alt="Upload Form"/>
+                                        <div class="caption">
+                                            <h2>Upload Form</h2>
+                                            <p>Click to Upload Form</p>
+                                            <p><a class="btn btn-primary" href="{% static "forms/injuredonduty.pdf" %}"
+                                                  role="button">View
+                                                details &raquo;</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="thumbnail">
+                                        <img src="{% static "img/form.png" %}" alt="Previous Status"/>
+                                        <div class="caption">
+                                            <h2>Previous Status</h2>
+                                            <p>Click to check Previous Status</p>
+                                            <p><a class="btn btn-primary" href="{% static "forms/injuredonduty.pdf" %}"
+                                                  role="button">View
+                                                details &raquo;</a></p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </body>
+    </html>
+{% endblock %}
