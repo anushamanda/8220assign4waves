@@ -84,6 +84,7 @@
                         </ul>
                     </li>
                 {% else %}
+                    <li><a href="{% url 'register' %}"><span class="glyphicon glyphicon-log-in"></span> register</a></li>
                     <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
                 {% endif %}
             </ul>
