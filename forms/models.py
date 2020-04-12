@@ -6,10 +6,7 @@ from datetime import datetime
 
 class Forms(models.Model):
     form_title = models.CharField(max_length=200)
-    form_1 = models.FileField(upload_to='files/%Y/%m/%d/', blank=True)
-    form_2 = models.FileField(upload_to='files/%Y/%m/%d/', blank=True)
-    form_3 = models.FileField(upload_to='files/%Y/%m/%d/', blank=True)
-    form_4 = models.FileField(upload_to='files/%Y/%m/%d/', blank=True)
+    form = models.FileField(upload_to='files/%Y/%m/%d/', blank=True)
     created_date = models.DateTimeField(default=timezone.now)
     published_date = models.DateTimeField(blank=True, null=True)
     is_published=models.BooleanField(default=True)

@@ -11,12 +11,29 @@
                     <p>Please choose from below options.</p>
 
                 </div>
-            {% endif %}
-            <div class="content container">
+                <div class="content container">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="links">
-                            <!-- Example row of columns -->
+                            {% if forms %}
+                                {% for form in forms %}
+                                    <div class="row">
+                                    <div class="col-md-3">
+                                    <div class="thumbnail">
+                                        <img src="{% static "img/form1.png" %}" alt="{{ form.form_title }}"/>
+                                        <div class="caption">
+                                            <h4 class="text-primary">{{ form.form_title }}</h4>
+                                            <p><a class="btn btn-primary" download="{{ form.form_title }}" href="{{ form.form.url }}"
+                                                  role="button">Download &raquo;</a></p>
+                                        </div>
+                                    </div>
+                                    </div>
+                                        {% endfor %}
+                            {% else %}
+                                <p>no forms</p>
+                            {% endif %}
+
+                            <!-- Example row of columns
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="thumbnail">
@@ -82,6 +99,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                -->
 
                             </div>
                         </div>
@@ -90,4 +108,5 @@
             </div>
     </body>
     </html>
+{% endif %}
 {% endblock %}

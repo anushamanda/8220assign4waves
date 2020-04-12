@@ -1,7 +1,7 @@
 *.pyc
 *~
 __pycache__
-venv/
+env/
 *.sqlite3
 local_settings.py
 .DS_Store

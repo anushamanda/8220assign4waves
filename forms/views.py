@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Forms
 
 
 def index(request):
@@ -11,7 +12,11 @@ def contact(request):
     return render(request, 'pages/contact.html')
 
 def forms(request):
-   return render(request, 'forms/forms.html')
+    forms= Forms.objects.all()
+    context={
+    'forms':forms
+    }
+    return render(request, 'forms/forms.html', context)
 
 def form(request):
    return render(request, 'forms/form.html')
