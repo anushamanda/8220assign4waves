@@ -1,3 +1,10 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% extends "base.html" %}
+
+{% block content %}
+
 {% load static %}
 <section id="login" class="bg-light py-5">
     <div class="container">
@@ -24,6 +31,11 @@
                 </div>
 
                 <input type="submit" value="Login" class="btn btn-secondary btn-block">
+                  <br>
+                  <br>
+                  <a href="{% url 'reset_password' %}">
+                      forgot password
+                  </a>
               </form>
             </div>
           </div>
@@ -31,3 +43,7 @@
       </div>
     </div>
   </section>
+
+{% endblock %}
+
+</html>>
