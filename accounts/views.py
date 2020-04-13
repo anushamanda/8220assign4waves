@@ -4,7 +4,10 @@ from django.contrib.auth.models import User
 from django.contrib.auth import views as auth_views, forms as auth_forms
 from django.urls import reverse_lazy
 from django.contrib.auth import logout as django_logout
+from .decorators import unauthenticated_user
 
+
+@unauthenticated_user
 def register(request):
     if request.method=='POST':
        #get forms
@@ -36,6 +39,7 @@ def register(request):
     else:
         return render (request, 'accounts/register.html')
 
+@unauthenticated_user
 def login(request):
     if request.method=='POST':
         username = request.POST['username']
@@ -44,7 +48,7 @@ def login(request):
         if user is not None:
             auth.login(request, user)
             messages.success(request, 'You are now logged in')
-            return redirect('dashboard')
+            return redirect('index')
         else:
             messages.error(request, 'Invalid credentails')
             return redirect('login')
