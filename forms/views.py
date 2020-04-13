@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Forms
+from .models import Forms, Uploadforms
 
 
 def index(request):
@@ -20,6 +20,14 @@ def forms(request):
 
 def form(request):
    return render(request, 'forms/form.html')
+
+def uploadforms(request):
+    uploadforms = Uploadforms.objects.all()
+    context = {
+        'uploadforms': uploadforms
+    }
+    return render(request, 'forms/uploadforms.html', context)
+
 
 def search(request):
     return render(request, 'forms/search.html')

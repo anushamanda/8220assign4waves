@@ -1,12 +1,17 @@
 from django.contrib import admin
 
-from .models import Forms, Record_log, Record, Station
+from .models import Forms, Record_log, Record, Station, Uploadforms
 
 class FormAdmin(admin.ModelAdmin):
     list_display = ('id', 'form_title', 'created_date', 'is_published', 'published_date', )
     list_display_links = ('id', 'form_title')
     list_filter = ('form_title',)
     list_editable = ('is_published',)
+
+class UploadformsAdmin(admin.ModelAdmin):
+    list_display = ('id', 'form_name', 'uploaded_date',)
+    list_display_links = ('id', 'form_name',)
+    list_filter = ('form_name',)
 
 class Record_logAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'form_name', 'uploaded_date',)
@@ -30,3 +35,4 @@ admin.site.register(Forms, FormAdmin)
 admin.site.register(Record_log, Record_logAdmin)
 admin.site.register(Record, RecordAdmin)
 admin.site.register(Station, StationAdmin)
+admin.site.register(Uploadforms, UploadformsAdmin)

@@ -18,6 +18,15 @@ class Forms(models.Model):
     def __str__(self):
             return self.form_title
 
+class Uploadforms(models.Model):
+    form_name = models.CharField(max_length=200)
+    upload_form=models.FileField(upload_to='uploadedfiles/%Y/%m/%d/', blank=True)
+    comments = models.TextField()
+    uploaded_date = models.DateTimeField(default=datetime.now, blank=True)
+
+    def __str__(self):
+            return self.form_name
+
 class Record_log(models.Model):
     form_name= models.CharField(max_length=50)
     form_id=models.IntegerField()
