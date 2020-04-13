@@ -3,12 +3,45 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
 {% block content %}
-<body>
-    <div class="page-container">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+.links1{
+  color: white;
+}
+
+.parallax {
+  /* The image used */
+  background-image: url("https://www.powerdms.com/wp-content/uploads/2017/09/powerdms-assets-photos-285-fire-737x394.jpg");
+
+  /* Set a specific height */
+  min-height: 500px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.navbar {
+             
+             top: 0; /* Position the navbar at the top of the page */
+             width: 100%; /* Full width */
+            margin-bottom: 0;
+            border-radius: 0;
+        }
+
+</style>
+</head>
+<body  style="background-color: #990000;">
+
+    <div class="page-container links1">
 
            <h2 class="top-menu">Omaha FireFighters Wellness System</h2>
-    </div>
-        <div class="content container">
+
+
+        <div class="content container links1">
            <div class="row">
                <div class="col-md-20">
                    <div class="links">
@@ -16,6 +49,7 @@
                        <div class="row">
                            <div class="col-md-7">
                                <br>
+
                                <p>The Omaha FireFighters Wellness System is the website created with
                                    <br>the purpose to make the lives of our hero easy.
                                    <br>We all know that with the help of technology, our routine can be
@@ -23,6 +57,7 @@
                                    <br>upload their forms regarding their injuries, and will communicate with their
                                    <br>supervisors. </p>
                                <br>
+
                                <p>In Omaha, there are in total of 650 firefighter who face many hazardous and
                                    <br>dangerous situations in order to save people. It is very important to
                                    <br>maintain their health records. Omaha Fire department wellness system will
@@ -50,6 +85,7 @@
                </div>
            </div>
        </div>
+    </div>
 </body>
 {% endblock %}
 </html>
