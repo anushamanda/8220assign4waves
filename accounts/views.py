@@ -1,3 +1,4 @@
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, redirect
 from django.contrib import messages, auth
 from django.contrib.auth.models import User
@@ -5,55 +6,77 @@ from django.contrib.auth import views as auth_views, forms as auth_forms
 from django.urls import reverse_lazy
 from django.contrib.auth import logout as django_logout
 from .decorators import unauthenticated_user
+from .models import Profile
+from .forms import CustomerRegistrationForm, UserLoginForm
+from django.urls import reverse
+from django.contrib.auth import authenticate, login
+from forms.views import home
 
 
-@unauthenticated_user
 def register(request):
-    if request.method=='POST':
-       #get forms
-       first_name= request.POST ['first_name']
-       last_name=request.POST ['first_name']
-       username = request.POST['username']
-       email = request.POST['email']
-       password = request.POST['password']
-       password2 = request.POST['password2']
+    if request.method == 'POST':
+        user_form = CustomerRegistrationForm(request.POST)
+        if user_form.is_valid():
+            # Create a new user object but avoid saving it yet
+            new_user = user_form.save(commit=False)
+            # Set the chosen password
+            new_user.set_password(user_form.cleaned_data['password'])
+            # Save the User object
+            new_user.save()
+            Profile.objects.create(user=new_user, is_firefighter=True)
+            return render(request,
+                          'accounts/login.html',
+                          {'new_user': new_user})
+    else:
+        user_form = CustomerRegistrationForm()
+    return render(request,
+                  'accounts/register.html',
+                  {'user_form': user_form})
 
-       #check password match
-       if password==password2:
-           #check username
-            if User.objects.filter(username=username).exists():
-                messages.error(request, 'Username is taken')
-                return redirect('register')
-            else:
-                if User.objects.filter(email=email).exists():
-                    messages.error(request, 'Email is used')
-                    return redirect('register')
+def register_supervisor(request):
+    if request.method == 'POST':
+        user_form = CustomerRegistrationForm(request.POST)
+        if user_form.is_valid():
+            # Create a new user object but avoid saving it yet
+            new_user = user_form.save(commit=False)
+            # Set the chosen password
+            new_user.set_password(user_form.cleaned_data['password'])
+            # Save the User object
+            new_user.save()
+            Profile.objects.create(user=new_user, is_supervisor=True)
+            # property = Property.objects.get(apt_no=user_form.cleaned_data['apt_no'])
+            # Tenant.objects.create(user=new_user, apt_no=property, lease_start_date=user_form.cleaned_data['lease_start_date'], lease_end_date=user_form.cleaned_data['lease_end_date'])
+            return render(request,
+                          'accounts/login.html',
+                          {'new_user': new_user})
+    else:
+        user_form = CustomerRegistrationForm()
+    return render(request,
+                  'accounts/register_supervisor.html',
+                  {'user_form': user_form})
+
+
+def user_login(request):
+    if request.method == 'POST':
+        form = UserLoginForm(request.POST)
+        if form.is_valid():
+            cd = form.cleaned_data
+            user = authenticate(request, username=cd['username'], password=cd['password'])
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    if user.profile.is_firefighter or user.is_superuser:
+                        return render(request, 'pages/index.html')
+                    elif user.profile.is_supervisor or user.is_superuser:
+                        #return HttpResponseRedirect(reverse('register_supervisor'))
+                        return render(request, 'supervisor/supervisordash.html')
                 else:
-                    user = User.objects.create_user(username=username, password=password, email=email, first_name=first_name, last_name=last_name)
-                    user.save()
-                    messages.success(request, 'you are registered please login')
-                    return redirect('login')
-       else:
-           messages.error(request, 'passwords do not match')
-           return redirect('register')
+                    return HttpResponse('Disabled account')
+            else:
+                return HttpResponse('Invalid login')
     else:
-        return render (request, 'accounts/register.html')
-
-@unauthenticated_user
-def login(request):
-    if request.method=='POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        user = auth.authenticate(username=username, password=password)
-        if user is not None:
-            auth.login(request, user)
-            messages.success(request, 'You are now logged in')
-            return redirect('index')
-        else:
-            messages.error(request, 'Invalid credentails')
-            return redirect('login')
-    else:
-        return render (request, 'accounts/login.html')
+        form = UserLoginForm()
+    return render(request, 'accounts/login.html', {'form': form})
 
 def logout(request):
     django_logout(request)
@@ -103,3 +126,4 @@ class ChangePasswordResetDoneView(auth_views.PasswordChangeView):
 class ChangePasswordResetDoneSuccessView(auth_views.PasswordChangeView):
     form_class = auth_forms.PasswordChangeForm
     template_name = 'change_password_done.html'
+

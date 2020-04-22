@@ -1,4 +1,4 @@
-#!c:\users\anu08\pycharmprojects\assign5github2\8220s2020team3-app\env\scripts\python.exe
+#!C:\Users\anu08\PycharmProjects\MSDproject\vamsicreated\vamsi fold\8220vm\env\Scripts\python.exe
 from django.core import management
 
 if __name__ == "__main__":

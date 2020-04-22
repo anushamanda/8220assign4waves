@@ -1,4 +1,4 @@
-#!C:\Users\anu08\PycharmProjects\assign5github2\8220s2020team3-app\env\Scripts\python.exe
+#!"C:\Users\anu08\PycharmProjects\MSDproject\vamsicreated\vamsi fold\8220vm\env\Scripts\python.exe"
 # EASY-INSTALL-ENTRY-SCRIPT: 'pip==19.0.3','console_scripts','pip3'
 __requires__ = 'pip==19.0.3'
 import re

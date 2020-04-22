@@ -151,9 +151,14 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'hariomaha07@gmail.com'
 EMAIL_HOST_PASSWORD = 'Test@123'
 EMAIL_USE_TLS = True
+AUTH_USER_MODEL = "accounts.CustomUser"
+
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
+LOGIN_REDIRECT_URL ='/'
+LOGOUT_REDIRECT_URL = '/'
 
 django_heroku.settings(locals())
 
-LOGIN_REDIRECT_URL ='/'
-LOGOUT_REDIRECT_URL = '/'
+
 
