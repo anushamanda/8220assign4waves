@@ -73,7 +73,7 @@ def search(request):
 
 
 
-
+@login_required()
 def enrollment(request):
     if request.method =='POST':
         event_id=request.POST['event_id']
@@ -100,7 +100,7 @@ def enrollment(request):
         messages.success(request, 'You are succefully enrolled to this session')
         return redirect('/events/')
 
-
+@login_required()
 def enrolled_events(request):
 
     user_enrollments = Enrollment.objects.order_by('-contact_date').filter(user_id=request.user.id)
@@ -110,12 +110,13 @@ def enrolled_events(request):
     return render(request, 'customerpages/enrolled_events.html', context)
 
 
-
+@login_required()
 def enrolledevent_delete(request, pk):
    enrollment = get_object_or_404(Enrollment, pk=pk)
    enrollment.delete()
    return redirect ('enrolled_events')
 
+@login_required()
 def enrollment_list(request):
     user_enrollments = Enrollment.objects.order_by('-contact_date')
     context = {

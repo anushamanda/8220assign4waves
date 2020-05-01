@@ -1,9 +1,14 @@
 {% extends 'base.html' %}
+
 {% load crispy_forms_tags %}
 {% block content %}
+{% if user.profile.is_employee %}
     <h1>Add a New Event</h1>
     <form method="POST" class="service-form">{% csrf_token %}
           {{ form|crispy }}
         <button type="submit" class="save btn btn-default">Save</button>
     </form>
+    {% else %}
+you cannot access this page
+{% endif %}
 {% endblock %}

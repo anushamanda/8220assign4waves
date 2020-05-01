@@ -2,6 +2,7 @@
 
 {% block content %}
 
+    {% if user.profile.id_customer %}
 
 
   <section id="enrolled_events" class="py-4">
@@ -46,5 +47,8 @@
       </div>
     </div>
   </section>
+    {% else %}
+    you cannot access this page
+    {% endif %}
 
 {% endblock %}
