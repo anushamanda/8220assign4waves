@@ -3,7 +3,7 @@
 {% block content %}
 
 
-{% if user.profile.id_employee %}
+
 
 <section id="listings" class="py-4">
     <div class="container">
@@ -11,7 +11,7 @@
 
 {% include 'partials/_alerts.html' %}
 
-
+{% if user.profile.is_employee %}
       <div class="row">
         <h2 style="padding-left: 15Px"> List of Users enrolled for events </h2>
     </div>
@@ -56,6 +56,7 @@
             {% endif %}
             </tbody>
         </table>
+    {% endif %}
 
     </div>
 
@@ -70,7 +71,5 @@
       </div>
     </div>
 </section>
-    {% else %}
-    you cannot access this page
-    {% endif %}
+
 {% endblock %}

@@ -2,16 +2,19 @@
 
 {% block content %}
 
-    {% if user.profile.id_customer %}
+
 
 
   <section id="enrolled_events" class="py-4">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
+
           <h2>Welcome {{ user.username }}</h2>
             {% if enrollments %}
+
               <p>LIst of Events you have enrolled </p>
+
               <table class="table">
                 <thead>
                   <tr>
@@ -20,6 +23,7 @@
                     <th></th>
                   </tr>
                 </thead>
+
                 <tbody>
                 {% for enrollment in enrollments %}
                   <tr>
@@ -40,15 +44,14 @@
                 {% endfor %}
                 </tbody>
               </table>
-            {% else %}
+
                 <p>you have not yet made any inquery </p>
             {% endif %}
+
         </div>
       </div>
     </div>
   </section>
-    {% else %}
-    you cannot access this page
-    {% endif %}
+
 
 {% endblock %}
