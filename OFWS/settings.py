@@ -39,15 +39,17 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.postgres',
-    'forms',
-    'supervisor',
     'accounts',
+    'storages',
+    'waves',
+    'crispy_forms'
 ]
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -82,15 +84,22 @@ WSGI_APPLICATION = 'OFWS.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'd2u4u7kmjus8sk',
-        'USER': 'yoieffyidzettq',
-        'PASSWORD': 'fc4d70f6e47a6983d752552c5a69520e31b3d732a40f62f056ace19c925cce4b',
-        'HOST': 'ec2-3-91-112-166.compute-1.amazonaws.com',
-        'PORT': '5432',
-
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': '8220vm',
+        'USER': 'postgres',
+        'PASSWORD': 'Svak2718@'
     }
 }
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'test123@gmail.com'
+EMAIL_HOST_PASSWORD = 'test123'
+EMAIL_USE_TLS = True
+
+
+
 
 
 # Password validation
@@ -125,32 +134,14 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/3.0/howto/static-files/
-STATIC_ROOT= os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'OFWS/static')
+    os.path.join(BASE_DIR, 'OFWS/static'),
 ]
 
-# media folder
-MEDIA_ROOT= os.path.join(BASE_DIR, 'media')
-MEDIA_URL= '/media/'
 
-# messaging
-
-from django.contrib.messages import constants as messages
-MESSAGE_TAGS= {
-    messages.ERROR: 'DANGER'
-}
-
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'hariomaha07@gmail.com'
-EMAIL_HOST_PASSWORD = 'Test@123'
-EMAIL_USE_TLS = True
 AUTH_USER_MODEL = "accounts.CustomUser"
 
 LOGIN_URL = 'login'

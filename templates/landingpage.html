@@ -1,1 +1,87 @@
-<h1>landing page</h1>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+.links1{
+  color: white;
+}
+
+.parallax {
+  /* The image used */
+  background-image: url("/staticfiles/img/backround.jpg");
+
+  /* Set a specific height */
+  min-height: 430px;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.navbar
+</style>
+</head>
+
+    <body  style="background-color: #008080;">
+
+    <div class="page-container links1">
+
+           <h2 class="top-menu">Welcome to Waves fittness center</h2>
+
+
+        <div class="content container links1">
+           <div class="row">
+               <div class="col-md-20">
+                   <div class="links">
+                       <!-- Example row of columns -->
+                       <div class="row">
+                           <div class="col-md-7">
+                               <br>
+
+                               <p>The Omaha FireFighters Wellness System is the website created with
+                                   <br>We offer many group sessions in order to stay fit and healthy
+                                   <br>We have traniers who are specialized in their respective fields and
+                                   <br>they moniter each and every one's posture in order to get the results perfectly.
+                                   <br>we not only offer pysical traning we also conduct worhops on meditations and mental health exsersises
+                                   <br> </p>
+                               <br>
+
+                               <p><h3>For more Information contact us through
+                                   <br>waves@fittness.com
+                                    <br>999-999-9999
+                               </h3>
+                               </p>
+
+
+                           </div>
+                            <div class="col-md-4">
+                               <div class="thumbnail">
+                                   <img class="home_image" src="{% static 'img/backround.jpg' %}" alt="logo"/>
+                                   <div class="caption" style="text-align:center">
+                                       <h3>We post event every week!</h3>
+                                       <button type="button" class="btn btn-outline-primary"><a href="{% url 'events' %}"><b>Check our events here</b></a></button>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+    </div>
+</body>
+<!-- Showcase -->
+
+
+
+
+
+      </div>
+    </div>
+  </section>
+{% endblock %}

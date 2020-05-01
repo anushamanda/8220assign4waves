@@ -1,6 +1,5 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
-
 from OFWS import settings
 
 
@@ -14,8 +13,8 @@ class Profile(models.Model):
     state = models.CharField(max_length=50)
     zipcode = models.CharField(max_length=10)
     phone_number = models.CharField(max_length=50)
-    is_firefighter = models.BooleanField(default=False)
-    is_supervisor = models.BooleanField(default=False)
+    is_customer = models.BooleanField(default=False)
+    is_employee = models.BooleanField(default=False)
 
 
 

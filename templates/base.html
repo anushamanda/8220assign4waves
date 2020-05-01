@@ -2,113 +2,85 @@
 
 <html lang="en">
 <head>
-    <title>Omaha Firefighters Wellness System</title>
+    <title>waves fitness center</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/staticfiles/css/custom.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
 </head>
 <body id="app-layout">
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
+            <p>
+                {% if user.is_authenticated %}
+                    <a class="navbar-brand" href=/home>
+                        <b>Hello {{ user.username }}</b>
+                    </a>
+                    {% else %}
+                    <a class="navbar-brand" href=/>
+                        <b>Waves fitness center</b>
+                    </a>
+                {% endif %}
+            <a class="navbar-brand" href="{% url 'about' %}">
+                        <b>About</b>
 
-            <!-- Collapsed Hamburger -->
-            <button type="button" class="navbar-toggle" data-toggle="collapse"
-                    data-target="#myNavbar">
-                <span class="sr-only">Toggle Navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+                <a class="navbar-brand" href="{% url 'events' %}">
+                        <b>Events</b>
+                    </a>
+                {% if user.profile.is_employee %}
 
-            <!-- Branding Image -->
-            <a class="navbar-brand" href="/">
-                Omaha Firefighters
-            </a>
+                    <a class="navbar-brand" href="{% url 'enrollment_list' %}">
+                        <b>Enrollment list</b>
+                    </a>
+                {% endif %}
+            {% if user.profile.is_customer %}
+             <a class="navbar-brand" href="{% url 'enrolled_events' %}">
+                        <b>Enrolled events</b>
+                    </a>
+                {% endif %}
+
+            </p>
+
         </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav">
-                <li><a href="{% url 'index' %}">Home</a></li>
-               <li><a href="{% url 'about' %}">About</a></li>
-                <li><a href="{% url 'contact' %}">Contact Us</a></li>
 
-            </ul>
+        <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
                 {% if user.is_authenticated %}
-                    <div class="collapse navbar-collapse" id="myNavbar">
-                    <ul class="nav navbar-nav">
-                    <li><a href="{% url 'forms' %}">Forms</a></li>
-                    <li><a href="{% url 'uploadforms' %}">Upload Forms</a></li>
+                    <li class="nav-item"><a class="nav-link" href=/home><b>Home</b></a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu">
                             <li><a href="{% url 'logout' %}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
-                             <li><a href="{% url 'change_password'%}">Change password</a></li>
+                             <li><a href="{% url 'password_change'%}">Change password</a></li>
                         </ul>
                     </li>
                 {% else %}
-                    <li><a href="{% url 'register' %}"><span class="glyphicon glyphicon-log-in"></span> register</a></li>
-                    <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    <li><a href="{% url 'register_customer' %}"><span class="glyphicon glyphicon-log-in"></span> <b>Register</b></a></li>
+                    <li><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span> <b>Login</b></a></li>
                 {% endif %}
             </ul>
         </div>
     </div>
 </nav>
-<div class="parallax"></div>
 <div class="content container">
     <div class="row">
-        <div class="col-md-8">
-            {% block content %}
-                <div class="links">
-                    <!-- Example row of columns -->
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="thumbnail">
-                                <img src="{% static "img/logoo.png" %}" alt="customer"/>
-                                <div class="caption">
-                                    <h2>Customer</h2>
-                                    <p>Delighting customers and giving them a great dining experience is our main goal. </p>
-                                    {% if user.is_authenticated %}
-                                        <p><a class="btn btn-default" href="{% url 'index' %}"
-                                              role="button">View
-                                            details &raquo;</a></p>
-                                    {% endif %}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="thumbnail">
-                                <img src="{% static "img/logoo.png" %}" alt="cupcakes"/>
-                                <div class="caption">
-                                    <h2>Products</h2>
-                                    <p>High quality products at affordable prices.</p>
-                                    <p><a class="btn btn-default" href="{% url 'forms' %}"
-                                           role="button">View
-                                        details &raquo;</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="thumbnail">
-                                <img src="{% static "img/logoo.png" %}" alt="lunch"/>
-                                <div class="caption">
-                                    <h2>Services</h2>
-                                    <p>Our food and services are second to none.</p>
-                                    <p><a class="btn btn-default" href="{% url 'about' %}" role="button">View
-                                        details &raquo;</a></p>
-                                </div>
-                            </div>
-                        </div>
+        <div class="col-md-15">
 
-                    </div>
-                </div>
+
+
+            {% block content %}
+            <!-- Page Content -->
             {% endblock %}
         </div>
     </div>
+</div>
 </body>
 </html>
+

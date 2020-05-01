@@ -6,7 +6,7 @@ from .models import CustomUser,Profile
 # Register your models here.
 class ProfileAdmin(admin.ModelAdmin):
     model=Profile
-    list_display = ['user','address', 'city', 'state', 'is_firefighter', 'is_supervisor']
+    list_display = ['user','address', 'city', 'state', 'is_employee', 'is_customer']
 
 
 
